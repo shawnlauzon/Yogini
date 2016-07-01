@@ -3,12 +3,12 @@ import { App, ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { UserProfile } from './pages/page1/page1';
-import { Programs } from './pages/programs/programs';
+import { Programs } from './pages/page2/page2';
 
 @Component({
   templateUrl: 'build/app.html'
 })
-class MyApp {
+class Yogini {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = Programs;
@@ -41,4 +41,4 @@ class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(Yogini);
