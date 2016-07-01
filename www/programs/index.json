@@ -3,11 +3,13 @@
     {
       "id": "64285a6a-8ed3-426f-91a6-c5f971c239b2",
       "name": "Basic Agama practice",
+      "creator": "Yogini",
       "time_minutes": 90
     },
     {
       "id": "76738951-a913-4b3d-a902-dc2e03c0c47c",
       "name": "All asanas",
+      "creator": "Yogini",
       "time_minutes": 90
     }
   ]

@@ -22,7 +22,7 @@ export class Programs {
       index.programs.forEach((element, index, array) => {
         this.items.push({
           title: element.name,
-          note: 'This is item #' + index,
+          note: "Provided by " + element.creator,
           icon: 'rose'
         });
       });
