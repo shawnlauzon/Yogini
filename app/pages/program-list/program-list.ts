@@ -4,10 +4,10 @@ import { ProgramProvider } from '../../providers/program-provider/program-provid
 import { ProgramOverviewPage } from '../program-overview/program-overview';
 
 @Component({
-  templateUrl: 'build/pages/page2/page2.html',
+  templateUrl: 'build/pages/program-list/program-list.html',
   providers: [ProgramProvider]
 })
-export class Programs {
+export class ProgramListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;

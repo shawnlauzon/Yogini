@@ -3,7 +3,7 @@ import { App, ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { UserProfile } from './pages/page1/page1';
-import { Programs } from './pages/page2/page2';
+import { ProgramListPage } from './pages/program-list/program-list';
 
 @Component({
   templateUrl: 'build/app.html'
@@ -21,7 +21,7 @@ class Yogini {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'John Smith', component: UserProfile },
-      { title: 'Programs', component: Programs }
+      { title: 'Programs', component: ProgramListPage }
     ];
 
   }
