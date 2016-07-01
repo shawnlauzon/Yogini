@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ProgramProvider } from '../../providers/program-provider/program-provider';
 
 /*
   Generated class for the ProgramOverviewPage page.
@@ -9,11 +10,18 @@ import { NavController, NavParams } from 'ionic-angular';
 */
 @Component({
   templateUrl: 'build/pages/program-overview/program-overview.html',
+  providers: [ProgramProvider]
 })
 export class ProgramOverviewPage {
-  item: any;
+  programInfo: any;	// Just the metadata from the index file
+  program: any;		// All the program info from the program file
 
-  constructor(private nav: NavController, navParams: NavParams) {
-  	this.item = navParams.get('item');
+  constructor(public programProvider: ProgramProvider,
+  	private nav: NavController, navParams: NavParams) {
+  	this.programInfo = navParams.get('item');
+
+  	this.programProvider.loadProgram(this.programInfo.id).then((program) => {
+  		this.program = program;
+  	});
   }
 }

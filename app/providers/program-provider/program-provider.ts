@@ -44,7 +44,7 @@ export class ProgramProvider {
       // We're using Angular Http provider to request the index,
       // then on the response it'll map the JSON index to a parsed JS object.
       // Next we process the index and resolve the promise with the new index.
-      this.http.get('programs/${id}.json')
+      this.http.get(`programs/${id}.json`)
         .map(res => res.json())
         .subscribe(index => {
           // we've got back the raw index, now generate the core schedule index

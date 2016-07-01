@@ -9,8 +9,7 @@ import { ProgramOverviewPage } from '../program-overview/program-overview';
 })
 export class ProgramListPage {
   selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<{title: string, note: string, icon: string, id: string}>;
 
   constructor(public programProvider: ProgramProvider, 
     private nav: NavController, navParams: NavParams) {
@@ -23,8 +22,9 @@ export class ProgramListPage {
       index.programs.forEach((element, index, array) => {
         this.items.push({
           title: element.name,
-          note: "Provided by " + element.creator,
-          icon: 'rose'
+          note: `Provided by ${element.creator}`,
+          icon: 'rose',
+          id: element.id
         });
       });
     });
