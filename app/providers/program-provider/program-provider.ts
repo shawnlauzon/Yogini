@@ -53,7 +53,6 @@ export class ProgramProvider {
           resolve(this.index);
         });
     });
-
   }
 }
 

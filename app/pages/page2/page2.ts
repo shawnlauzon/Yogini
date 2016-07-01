@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProgramProvider } from '../../providers/program-provider/program-provider';
+import { ProgramOverviewPage } from '../program-overview/program-overview';
 
 @Component({
   templateUrl: 'build/pages/page2/page2.html',
@@ -33,7 +34,7 @@ export class Programs {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.nav.push(Programs, {
+    this.nav.push(ProgramOverviewPage, {
       item: item
     });
   }
