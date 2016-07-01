@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { App, ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
-import { UserProfile } from './pages/page1/page1';
+import { UserProfilePage } from './pages/user-profile/user-profile';
 import { ProgramListPage } from './pages/program-list/program-list';
 
 @Component({
@@ -11,7 +11,7 @@ import { ProgramListPage } from './pages/program-list/program-list';
 class Yogini {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Programs;
+  rootPage: any = ProgramListPage;
 
   pages: Array<{title: string, component: any}>
 
@@ -20,7 +20,7 @@ class Yogini {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'John Smith', component: UserProfile },
+      { title: 'John Smith', component: UserProfilePage },
       { title: 'Programs', component: ProgramListPage }
     ];
 
