@@ -20,6 +20,7 @@ class Yogini {
 
     // used for an example of ngFor and navigation
     this.pages = [
+      // TODO The title of the UserProfile page should be the current user's name
       { title: 'John Smith', component: UserProfilePage },
       { title: 'Programs', component: ProgramListPage }
     ];

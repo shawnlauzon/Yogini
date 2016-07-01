@@ -27,8 +27,6 @@ export class ProgramListPage {
           icon: 'rose'
         });
       });
-
-      console.log(index);
     });
   }
 
