@@ -1,0 +1,441 @@
+{
+  "name": "All asanas",
+  "id": "76738951-a913-4b3d-a902-dc2e03c0c47c",
+  "published": true,
+  "image": "agama_yogo_logo.jpg",
+  "remaining_30sec": "android.resource://com.shantikama.yogini/raw/remaining_30sec",
+  "remaining_1min": "android.resource://com.shantikama.yogini/raw/remaining_1min",
+  "begin_audio": "android.resource://com.shantikama.yogini/raw/begin",
+  "end_audio": "android.resource://com.shantikama.yogini/raw/end",
+  "asanas": [
+    {
+      "id": "warm",
+      "name": "Warming exercises",
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/warming_0",
+      "announce_pause": 8,
+      "time": 0,
+      "order": 100,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_1_begin",
+          "time": 45,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_1_switch",
+          "time": 45,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_1_end",
+          "awareness_pause": 8,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_2_begin",
+          "time": 55,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_2_end",
+          "awareness_pause": 8,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_3_begin",
+          "time": 35,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_3_end",
+          "awareness_pause": 8,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_4_begin",
+          "time": 30,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_4_end",
+          "awareness_pause": 8,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_5_begin",
+          "time": 150,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_5_end",
+          "awareness_pause": 8,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_6_begin",
+          "time": 25,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_6_switch",
+          "time": 25,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_6_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    },
+    {
+      "id": "pad",
+      "name": "Pādahastāsana",
+      "time": 420,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/pad_begin",
+      "order": 200,
+      "sequence": [
+        {
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/pad_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    },
+    {
+      "id": "tad",
+      "name": "Tadāsana",
+      "time": 420,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/tad_announce",
+      "announce_pause": 3,
+      "order": 300,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/tad_tech",
+          "technique_pause": 1,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/tad_con",
+          "end_pause": 5,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/tad_aware",
+          "awareness_pause": 10
+        }
+      ]
+    },
+    {
+      "id": "sad",
+      "name": "Sahāja agnisāra dhauti",
+      "time": 25,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/sad_announce",
+      "announce_pause": 3,
+      "order": 500,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/sad_tech_clock",
+          "skip_phases": [ "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/sad_counter",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/sad_aware",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin" ]
+        }
+      ]
+    },
+    {
+      "id": "trik",
+      "name": "Trikonāsana",
+      "time": 150,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/trik_announce",
+      "announce_pause": 3,
+      "order": 500,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/trik_technique_left",
+          "technique_pause": 1,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/trik_concentration_left",
+          "end_pause": 5,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/trik_awareness_left",
+          "awareness_pause": 10
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/trik_technique_right",
+          "technique_pause": 1,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/trik_concentration_right",
+          "end_pause": 5,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/trik_awareness_right",
+          "awareness_pause": 10
+        }
+      ],
+      "stretch_audio": "android.resource://com.shantikama.yogini/raw/trik_stretch",
+      "stretch_pause": 10
+    },
+    {
+      "id": "garu",
+      "name": "Garudāsana",
+      "time": 120,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/garu_begin",
+      "announce_pause": 10,
+      "order": 1000,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/garu_left_begin",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/garu_left_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/garu_right_begin",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/garu_right_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    },
+    {
+      "id": "pp",
+      "name": "Prasārita pādottānāsana",
+      "time": 180,
+      "order": 1100,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/pp_ann",
+      "announce_pause": 20,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/pp_tech",
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/pp_conc",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/pp_aware",
+          "awareness_pause": 10
+        }
+      ]
+    },
+    {
+      "id": "pav",
+      "name": "Pavana muktāsana",
+      "time": 240,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/pm_begin",
+      "order": 1400,
+      "sequence": [
+        {
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/pm_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    },
+    {
+      "id": "bhujan",
+      "name": "Bhujangāsana",
+      "time": 180,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/bhujan_announce",
+      "announce_pause": 10,
+      "order": 1500,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/bhujan_technique",
+          "technique_pause": 3,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/bhujan_concentration",
+          "end_pause": 8,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/bhujan_awareness",
+          "awareness_pause": 10
+        }
+      ]
+    },
+    {
+      "id": "pash",
+      "name": "Paścimottānāsana",
+      "time": 240,
+      "order": 1600,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/paschi_begin",
+      "sequence": [
+        {
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/paschi_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    },
+    {
+      "id": "janu",
+      "name": "Jānuśirṣāsana",
+      "time": 180,
+      "order": 1800,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/janu_announce",
+      "announce_pause": 3,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/janu_left_technique",
+          "technique_pause": 1,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/janu_left_concentration",
+          "end_pause": 5,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/janu_left_awareness",
+          "awareness_pause": 10
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/janu_right_technique",
+          "technique_pause": 1,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/janu_right_concentration",
+          "end_pause": 5,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/janu_right_awareness",
+          "awareness_pause": 10
+        }
+      ]
+    },
+    {
+      "id": "gomu",
+      "name": "Gomukāsana",
+      "time": 150,
+      "order": 2000,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/gomu_begin",
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/gomu_left_begin",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/gomu_left_end",
+          "awareness_pause": 8,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/gomu_right_begin",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/gomu_right_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    },
+    {
+      "id": "am",
+      "name": "Ardha Matsyendrāsana",
+      "time": 180,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/am_ann",
+      "announce_pause": 20,
+      "order": 2100,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/am_tech_yin",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/am_aware_yin",
+          "awareness_pause": 10,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/am_conc_yin"
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/am_tech_yang",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/am_tech_yang",
+          "awareness_pause": 10,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/am_conc_yang"
+        }
+      ]
+    },
+    {
+      "id": "vaj",
+      "name": "Vajrāsana",
+      "time": 420,
+      "order": 2300,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/vaj_begin",
+      "sequence": [
+        {
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/vaj_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ],
+      "stretch_audio": "android.resource://com.shantikama.yogini/raw/vaj_stretch",
+      "stretch_pause": 40
+    },
+    {
+      "id": "sarvan",
+      "name": "Sarvāṅgāsana",
+      "time": 180,
+      "order": 2500,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/sarvan_ann",
+      "announce_pause": 20,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/sarvan_tech",
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/sarvan_conc",
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/sarvan_aware",
+          "awareness_pause": 10
+        }
+      ]
+    },
+    {
+      "id": "hal",
+      "name": "Halāsana",
+      "time": 180,
+      "order": 2600,
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/hala_begin",
+      "announce_pause": 20,
+      "sequence": [
+        {
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/hala_end",
+          "awareness_pause": 10,
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    },
+    {
+      "id": "shav",
+      "name": "Śavāsana",
+      "announce_audio": "android.resource://com.shantikama.yogini/raw/shavasana_announce",
+      "announce_pause": 20,
+      "time": 0,
+      "order": 100000,
+      "sequence": [
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_technique",
+          "technique_pause": 5,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/shavasana_leftleg_technique",
+          "time": 30,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/shavasana_leftleg_awareness",
+          "awareness_pause":5,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_rightleg_technique",
+          "time": 30,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/shavasana_rightleg_awareness",
+          "awareness_pause":5,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_leftarm_technique",
+          "time": 30,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/shavasana_leftarm_awareness",
+          "awareness_pause":5,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_rightarm_technique",
+          "time": 30,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/shavasana_rightarm_awareness",
+          "awareness_pause":5,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_buttocks",
+          "time": 5,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_pelvis_abdomen",
+          "time": 10,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_back",
+          "time": 15,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_chest_shoulders",
+          "time": 10,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_neck",
+          "time": 10,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_head",
+          "time": 30,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_global_relaxation",
+          "technique_pause": 35,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/shavasana_microcosm",
+          "time": 60,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/shavasana_grateful",
+          "awareness_pause": 15,
+          "skip_phases": [ "begin", "end" ]
+        },
+        {
+          "technique_audio": "android.resource://com.shantikama.yogini/raw/shavasana_harmony",
+          "technique_pause": 15,
+          "concentration_audio": "android.resource://com.shantikama.yogini/raw/shavasana_slowlymove",
+          "time": 15,
+          "awareness_audio": "android.resource://com.shantikama.yogini/raw/shavasana_namaste",
+          "skip_phases": [ "begin", "end" ]
+        }
+      ]
+    }
+  ]
+}
