@@ -31,7 +31,6 @@ export class ProgramListPage {
   }
 
   itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
     this.nav.push(ProgramOverviewPage, {
       item: item
     });

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Modal } from 'ionic-angular';
 import { ProgramProvider } from '../../providers/program-provider/program-provider';
+import { AsanaPage } from '../asana/asana';
 
 /*
   Generated class for the ProgramOverviewPage page.
@@ -18,10 +19,16 @@ export class ProgramOverviewPage {
 
   constructor(public programProvider: ProgramProvider,
   	private nav: NavController, navParams: NavParams) {
+
   	this.programInfo = navParams.get('item');
 
   	this.programProvider.loadProgram(this.programInfo.id).then((program) => {
   		this.program = program;
   	});
+  }
+
+  playPressed(event) {
+  	let asanaModal = Modal.create(AsanaPage);
+	this.nav.present(asanaModal);
   }
 }
