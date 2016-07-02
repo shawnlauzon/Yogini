@@ -29,7 +29,7 @@ export class ProgramOverviewPage {
 
   playPressed(event) {
 
-  	// FIXME For some reason the Modal gives an error about a messing directivie
+  	// FIXME For some reason the Modal gives an error about a messing directive
     // 	let asanaModal = Modal.create(AsanaPage, {
 	// 	program: this.program
 	// });
