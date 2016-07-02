@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-// import { InAppBrowser } from 'ionic-native';
+// import { ,InAppBrowser } from 'ionic-native';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
-import { Jsonp, Http, Headers } from '@angular/http';
 import { SC } from 'soundcloud';
+import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 // import * as soundcloud from 'soundcloud';
  
 /*
@@ -14,88 +14,65 @@ import { SC } from 'soundcloud';
 */
 @Component({
   templateUrl: 'build/pages/asana/asana.html',
+  providers: [ImgurProvider]
 })
 export class AsanaPage {
-  program: any;
-  cordovaOauth: CordovaOauth;
-  accessToken: string = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
-
   imageUrl: string;
   asanaName: string;
   asanaDescription: string;
 
-  constructor(private nav: NavController, navParams: NavParams, 
-    /*public jsonp: Jsonp, */ public http: Http) {
+  constructor(public imgur: ImgurProvider, 
+    private nav: NavController, navParams: NavParams) {
   	// TODO This should be handled with an Observable stream (Reative). For now
   	// just play the first one
 
-  	this.program = navParams.get('program');
-    console.log(this.program);
+  	var program = navParams.get('program');
 
-    this.asanaName = this.program.asanas[0].name;
-    this.asanaDescription = this.program.asanas[0].description;
+    this.asanaName = program.asanas[0].name;
+    this.asanaDescription = program.asanas[0].description;
+    
+    this.imgur.load(program.asanas[0].image_ur).then(data => {
+      this.imageUrl = data.link;
+    })
 
-    if (this.accessToken == null) {
-      this.signIntoInstagram();
-    } else {
-      this.showImage(this.program.asanas[0].image_ur);
-    }
+    // if (this.igAccessToken == null) {
+    //   this.signIntoInstagram();
+    // }
   	// this.streamAudio(this.program.asanas[0].announce_audio_sc)
   }
 
-  showImage(id: string) {
-    const IMGUR_CLIENT_ID = 'b7e267260e7dbb3';
-
-    console.log('Loading image ' + id);
-
-    //var url = `https://api.imgur.com/3/account/miyogini/images/ids/`;
-    var url = `https://api.imgur.com/3/image/${id}`;
-
-    this.http.get(url, {
-      headers: new Headers({ 'Authorization': 'Client-ID ' + IMGUR_CLIENT_ID })
-    })
-    .map(response => response.json())
-    .subscribe(response => {
-      console.log(response);
-      this.imageUrl = response.data.link;
-    });
-
-    // then((success) => {
-    //   console.log('success: ' + success);
-    // }, (error) => {
-    //   console.log('error: ' + error);
-    // });
-
-    // this.http.get(`https://api.instagram.com/v1/media/${id}?access_token=${this.accessToken}`)
-    //   .map(res => res.json())
-    //   .subscribe(data => {
-    //     this.images = data.data.images;
-    //   });
-  };
-
   signIntoInstagram() {
+    var cordovaOauth: CordovaOauth;
+    var igAccessToken: string = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
+    
     console.log('Attempting to sign into Instagram');
 
     const IG_CLIENT_ID = '6b419d3888d54ed8aba9d3871c1ea0dc';
     const IG_ACCESS_TOKEN = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
 
     console.log('Attempt init oAuth');
-    this.cordovaOauth = new CordovaOauth(new Instagram({ 
+    cordovaOauth = new CordovaOauth(new Instagram({ 
       clientId: IG_CLIENT_ID, 
       appScope: ["basic, public_content"], 
       redirectUri: 'http://localhost/callback'
     }));
     console.log('Attempt sign into IG');
 
-    this.cordovaOauth.login().then((success) => {
+    cordovaOauth.login().then((success) => {
       console.log(JSON.stringify(success));
-      this.accessToken = JSON.parse(JSON.stringify(success)).access_token;
-      console.log('Got access token: ' + this.accessToken);
+      igAccessToken = JSON.parse(JSON.stringify(success)).access_token;
+      console.log('Got access token: ' + igAccessToken);
       // TODO store access token and load image
     }, (error) => {
       console.log(JSON.stringify(error));
       console.log('Skipping images');
     });
+
+    // this.http.get(`https://api.instagram.com/v1/media/${id}?access_token=${this.accessToken}`)
+    //   .map(res => res.json())
+    //   .subscribe(data => {
+    //     this.images = data.data.images;
+    //   });
   }
 
 
