@@ -28,7 +28,16 @@ export class ProgramOverviewPage {
   }
 
   playPressed(event) {
-  	let asanaModal = Modal.create(AsanaPage);
-	this.nav.present(asanaModal);
+
+  	// FIXME For some reason the Modal gives an error about a messing directivie
+    // 	let asanaModal = Modal.create(AsanaPage, {
+	// 	program: this.program
+	// });
+
+	// this.nav.push(asanaModal);
+
+	this.nav.push(AsanaPage, {
+      program: this.program
+    });
   }
 }
