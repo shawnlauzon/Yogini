@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 // import { InAppBrowser } from 'ionic-native';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
-import { Jsonp, Http } from '@angular/http';
+import { Jsonp, Http, Headers } from '@angular/http';
 import { SC } from 'soundcloud';
 // import * as soundcloud from 'soundcloud';
  
@@ -20,7 +20,7 @@ export class AsanaPage {
   cordovaOauth: CordovaOauth;
   accessToken: string = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
 
-  images: any;
+  imageUrl: string;
 
   constructor(private nav: NavController, navParams: NavParams, 
     /*public jsonp: Jsonp, */ public http: Http) {
@@ -33,18 +33,39 @@ export class AsanaPage {
     if (this.accessToken == null) {
       this.signIntoInstagram();
     } else {
-      this.showImage(this.program.asanas[0].image_ig);
+      this.showImage(this.program.asanas[0].image_ur);
     }
   	// this.streamAudio(this.program.asanas[0].announce_audio_sc)
   }
 
   showImage(id: string) {
+    const IMGUR_CLIENT_ID = 'b7e267260e7dbb3';
+
     console.log('Loading image ' + id);
-    this.http.get(`https://api.instagram.com/v1/media/${id}?access_token=${this.accessToken}`)
-      .map(res => res.json())
-      .subscribe(data => {
-        this.images = data.data.images;
-      });
+
+    //var url = `https://api.imgur.com/3/account/miyogini/images/ids/`;
+    var url = `https://api.imgur.com/3/image/${id}`;
+
+    this.http.get(url, {
+      headers: new Headers({ 'Authorization': 'Client-ID ' + IMGUR_CLIENT_ID })
+    })
+    .map(response => response.json())
+    .subscribe(response => {
+      console.log(response);
+      this.imageUrl = response.data.link;
+    });
+
+    // then((success) => {
+    //   console.log('success: ' + success);
+    // }, (error) => {
+    //   console.log('error: ' + error);
+    // });
+
+    // this.http.get(`https://api.instagram.com/v1/media/${id}?access_token=${this.accessToken}`)
+    //   .map(res => res.json())
+    //   .subscribe(data => {
+    //     this.images = data.data.images;
+    //   });
   };
 
   signIntoInstagram() {
@@ -71,6 +92,7 @@ export class AsanaPage {
       console.log('Skipping images');
     });
   }
+
 
   streamAudio(id: string) {
     const SC_CLIENT_ID = '69e382c16c5478ccb5ea223a0e1c4c92';
