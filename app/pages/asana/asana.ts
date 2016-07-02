@@ -21,6 +21,8 @@ export class AsanaPage {
   accessToken: string = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
 
   imageUrl: string;
+  asanaName: string;
+  asanaDescription: string;
 
   constructor(private nav: NavController, navParams: NavParams, 
     /*public jsonp: Jsonp, */ public http: Http) {
@@ -29,6 +31,9 @@ export class AsanaPage {
 
   	this.program = navParams.get('program');
     console.log(this.program);
+
+    this.asanaName = this.program.asanas[0].name;
+    this.asanaDescription = this.program.asanas[0].description;
 
     if (this.accessToken == null) {
       this.signIntoInstagram();
