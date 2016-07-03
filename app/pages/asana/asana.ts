@@ -22,6 +22,9 @@ export class AsanaPage {
   asanaName: string;
   asanaDescription: string;
 
+  // the icon for the play / pause button should change based on its state
+  playButtonIcon: string;
+
   constructor(public imgur: ImgurProvider, 
     private nav: NavController, navParams: NavParams) {
   	// TODO This should be handled with an Observable stream (Reative). For now
@@ -39,7 +42,7 @@ export class AsanaPage {
     // if (this.igAccessToken == null) {
     //   this.signIntoInstagram();
     // }
-  	this.streamAudio(program.asanas[0].announce_audio_sc)
+  	this.streamAudio(program.asanas[0].announce_audio_sc);
   }
 
   signIntoInstagram() {
@@ -96,8 +99,9 @@ export class AsanaPage {
 
     SC.stream(audioStream).then(player => {
       player.play();
-    });
-  }
+      this.playButtonIcon = 'play';
+    })
+ }
 
   playAudio(file: string) {
   	var audioFile = `audio/${file}.mp3`
