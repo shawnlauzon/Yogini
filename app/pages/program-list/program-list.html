@@ -9,13 +9,14 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <button ion-item *ngFor="let programInfo of programs" 
+        (click)="itemTapped($event, programInfo)">
       <ion-avatar item-left>
-        <img [src]="item.image"/>
+        <img [src]="programInfo.imageSrc"/>
       </ion-avatar>
-      <h2>{{item.title}}</h2>
+      <h2>{{programInfo.name}}</h2>
       <ion-note item-right>
-        {{item.note}}
+        Provided by {{programInfo.creator}}
       </ion-note>
     </button>
   </ion-list>

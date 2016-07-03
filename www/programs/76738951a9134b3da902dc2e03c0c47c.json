@@ -2,7 +2,7 @@
   "name": "Full Agama practice",
   "id": "76738951a9134b3da902dc2e03c0c47c",
   "published": true,
-  "image_ur": "bTmWe71",
+  "image": "bTmWe71",
   "remaining_30sec": "android.resource://com.shantikama.yogini/raw/remaining_30sec",
   "remaining_1min": "android.resource://com.shantikama.yogini/raw/remaining_1min",
   "begin_audio": "android.resource://com.shantikama.yogini/raw/begin",
@@ -12,7 +12,7 @@
       "id": "warm",
       "name": "Warming exercises",
       "description": "Allows your body to get accustomed to the energy",
-      "image_ur": "gouhKrc",
+      "image": "gouhKrc",
       "time": 0,
       "order": 100,
       "sequence": [
@@ -84,7 +84,7 @@
       "time": 420,
       "announce_audio": "android.resource://com.shantikama.yogini/raw/pad_begin",
       "order": 200,
-      "image_ur": "FRSGL",
+      "image": "FRSGL",
       "sequence": [
         {
           "awareness_audio": "android.resource://com.shantikama.yogini/raw/pad_end",
@@ -100,7 +100,7 @@
       "announce_audio": "android.resource://com.shantikama.yogini/raw/tad_announce",
       "announce_pause": 3,
       "order": 300,
-      "image_ur": "0c8JO",
+      "image": "0c8JO",
       "sequence": [
         {
           "technique_audio": "android.resource://com.shantikama.yogini/raw/tad_tech",

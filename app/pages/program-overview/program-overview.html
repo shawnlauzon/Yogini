@@ -6,13 +6,13 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{programInfo.title}}</ion-title>
+    <ion-title>{{programInfo.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-card>
-    <img [src]="programInfo.image" />
+    <img [src]="programInfo.imageSrc" />
     <ion-card-content>
       <button (click)="playPressed($event)">
         <ion-icon name="play"></ion-icon>

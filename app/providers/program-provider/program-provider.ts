@@ -18,7 +18,7 @@ export class ProgramProvider {
     this.index = null;
   }
 
-  loadIndex() {
+  loadIndex(): Promise<Index> {
     if (this.index) {
       // already loaded index
       return Promise.resolve(this.index);
@@ -40,7 +40,7 @@ export class ProgramProvider {
     });
   }
 
-  loadProgram(id : string) {
+  loadProgram(id: string): Promise<Program> {
     // TODO Cache after loading
     return new Promise(resolve => {
       // We're using Angular Http provider to request the index,
@@ -58,16 +58,36 @@ export class ProgramProvider {
   }
 }
 
+export interface Index {
+  programs: Array<ProgramInfo>
+}
+
+export interface ProgramInfo {
+  id: string;
+  name: string;
+  creator: string;
+  image: string;
+  imageSrc?: string;
+}
+
+export interface Program {
+  id: string;
+  name: string;
+  creator: string;
+  image: string;
+  asanas: Array<Asana>;
+}
+
 export interface Asana {
   id: string;
   name: string;
-  image_ur: string;
+  image: string;
+  imageSrc?: string;
   order: number;
-  sequence: Array<SequenceItem>; 
+  sequence: Array<SequenceItem>;
 }
 
 export interface SequenceItem {
   audio: string;
   pause: number;
 }
-

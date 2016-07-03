@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 import { AudioPlayer } from '../../components/audio-player/audio-player';
-import { Asana } from '../../providers/program-provider/program-provider';
+import { Program, Asana } from '../../providers/program-provider/program-provider';
 
 // This is how to use something pulled from a script without typings defined
 // declare var SC: any;
@@ -22,7 +22,7 @@ import { Asana } from '../../providers/program-provider/program-provider';
 export class AsanaPage {
   @ViewChildren(AudioPlayer) audio: QueryList<AudioPlayer>;
 
-  program: any;
+  program: Program;
 
   constructor(private imgur: ImgurProvider, private nav: NavController,
     private navParams: NavParams) {
@@ -34,9 +34,9 @@ export class AsanaPage {
   _resolveImageUrls() {
     for (let i = 0; i < this.program.asanas.length; i++) {
       let element = this.program.asanas[i];
-      if (element.image_ur) {
-        this.imgur.get(element.image_ur).then(data => {
-          this.program.asanas[i].imageSrc = data.link;
+      if (element.image) {
+        this.imgur.get(element.image).then(data => {
+          element.imageSrc = data.link;
         });
       }
     };

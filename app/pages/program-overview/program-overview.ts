@@ -3,6 +3,7 @@ import { NavController, NavParams, Modal } from 'ionic-angular';
 import { ProgramProvider } from '../../providers/program-provider/program-provider';
 import { AsanaPage } from '../asana/asana';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
+import { ProgramInfo, Program } from '../../providers/program-provider/program-provider';
 
 /*
   Generated class for the ProgramOverviewPage page.
@@ -15,8 +16,8 @@ import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
   providers: [ProgramProvider, ImgurProvider]
 })
 export class ProgramOverviewPage {
-  programInfo: any;	// Just the metadata from the index file
-  program: any;		// All the program info from the program file
+  programInfo: ProgramInfo;	// Just the metadata from the index file
+  program: Program;		// All the program info from the program file
 
   image: string; // url of the image to display
 
@@ -26,7 +27,7 @@ export class ProgramOverviewPage {
     private nav: NavController, 
     private navParams: NavParams) {
 
-    this.programInfo = navParams.get('item');
+    this.programInfo = navParams.get('programInfo');
 
     this.programProvider.loadProgram(this.programInfo.id).then((program) => {
       this.program = program;
