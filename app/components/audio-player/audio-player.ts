@@ -38,7 +38,11 @@ export class AudioPlayer {
     }
   }
 
-  play() {
+  play(listener?: OnAudioFinishedListener) {
+    if (listener) {
+      this.player.on('finish', listener);
+    }
+
     console.log('play');
     this.player.play();
     this.icon = 'pause';
@@ -61,10 +65,13 @@ export class AudioPlayer {
 
     return new Promise(resolve => {
       SC.stream(STREAM_URL + id).then(player => {
-        player.on('finish', this.onAudioFinished);
         this.player = player;
         resolve();
       });
     });
   }
+}
+
+export interface OnAudioFinishedListener {
+  (): any;
 }

@@ -32,6 +32,7 @@ export class AsanaPage {
   	// just play the first one
 
   	this.program = navParams.get('program');
+    console.log(this.program);
 
     this.asanaName = this.program.asanas[0].name;
     this.asanaDescription = this.program.asanas[0].description;
@@ -43,10 +44,14 @@ export class AsanaPage {
 
   ngAfterViewInit() {
     console.log('Loading audio ...');
-    this.audio.load(this.program.asanas[0].announce_audio_sc).then(result => {
-      this.audio.play()
+    this.audio.load(this.program.asanas[0].sequence[0].audio).then(result => {
+      this.audio.play(this.onAudioFinished);
     });
   }
+
+  onAudioFinished() {
+    console.log('audio finished.');
+  };
 
   signIntoInstagram() {
     var cordovaOauth: CordovaOauth;

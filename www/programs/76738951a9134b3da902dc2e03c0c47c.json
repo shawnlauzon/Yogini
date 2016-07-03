@@ -12,64 +12,70 @@
       "id": "warm",
       "name": "Warming exercises",
       "description": "Allows your body to get accustomed to the energy",
-      "announce_audio_sc": "271734566",
       "image_ig": "1270721328573813311_181792531",
       "image_ur": "gouhKrc",
-      "announce_pause": 8,
       "time": 0,
       "order": 100,
       "sequence": [
-        {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_1_begin",
-          "time": 45,
-          "skip_phases": [ "begin", "end" ]
+        { 
+          "audio": "272029960",
+          "pause": 8
         },
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_1_switch",
-          "time": 45,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_1_end",
-          "awareness_pause": 8,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272029950",
+          "pause": 45
         },
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_2_begin",
-          "time": 55,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_2_end",
-          "awareness_pause": 8,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272029939",
+          "pause": 45
         },
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_3_begin",
-          "time": 35,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_3_end",
-          "awareness_pause": 8,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272029945",
+          "pause": 8
         },
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_4_begin",
-          "time": 30,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_4_end",
-          "awareness_pause": 8,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272029935",
+          "pause": 55
         },
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_5_begin",
-          "time": 150,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_5_end",
-          "awareness_pause": 8,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272029931",
+          "pause": 8
+        },
+       {
+          "audio": "272029928",
+          "pause": 35
         },
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_6_begin",
-          "time": 25,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272029923",
+          "pause": 8
         },
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/warming_6_switch",
-          "time": 25,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/warming_6_end",
-          "awareness_pause": 10,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272029920",
+          "pause": 30
+        },
+        {
+          "audio": "272029913",
+          "pause": 8
+        },
+        {
+          "audio": "272029902",
+          "pause": 150
+        },
+        {
+          "audio": "272029896",
+          "pause": 8
+        },
+        {
+          "audio": "272029886",
+          "pause": 25
+        },
+        {
+          "audio": "272029870",
+          "pause": 25
+        },
+        {
+          "audio": "272029879",
+          "pause": 10
         }
       ]
     },
