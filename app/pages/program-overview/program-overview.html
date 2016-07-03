@@ -11,7 +11,12 @@
 </ion-header>
 
 <ion-content padding>
-  <button (click)="playPressed($event)">
-    <ion-icon name="play"></ion-icon>
-  </button>
+  <ion-card>
+    <img [src]="programInfo.image" />
+    <ion-card-content>
+      <button (click)="playPressed($event)">
+        <ion-icon name="play"></ion-icon>
+      </button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
