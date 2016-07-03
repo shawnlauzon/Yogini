@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { App, NavController, NavParams } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
@@ -19,7 +19,7 @@ import { AudioPlayer } from '../../components/audio-player/audio-player';
   providers: [ImgurProvider]
 })
 export class AsanaPage {
-  private player: AudioPlayer;
+  @ViewChild(AudioPlayer) audio: AudioPlayer;
 
   imageUrl: string;
   asanaName: string;
@@ -28,8 +28,8 @@ export class AsanaPage {
   // the icon for the play / pause button should change based on its state
   playButtonIcon: string;
 
-  constructor(/*audio: AudioPlayer, */public imgur: ImgurProvider, 
-    private nav: NavController, navParams: NavParams) {
+  constructor(private imgur: ImgurProvider, private nav: NavController, 
+    private navParams: NavParams) {
   	// TODO This should be handled with an Observable stream (Reative). For now
   	// just play the first one
 
@@ -42,10 +42,8 @@ export class AsanaPage {
       this.imageUrl = data.link;
     })
 
-    console.log('Looking for audio player');
-    // this.player = app.getComponent('audio-player2');
-    // console.log('Loading audio ...');
-    //audio.load(program.asanas[0].announce_audio_sc);//.then(audio.play);
+    console.log('Loading audio ...');
+    //this.audio.load(program.asanas[0].announce_audio_sc).then(audio.play);
   }
 
   signIntoInstagram() {

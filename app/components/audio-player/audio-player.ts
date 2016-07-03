@@ -26,9 +26,9 @@ export class AudioPlayer {
       client_id: SC_CLIENT_ID
     });
 
-    this.load('271734566').then(result => {
-      this.play()
-    });
+    // this.load('271734566').then(result => {
+    //   this.play()
+    // });
   }
 
   audioToggled(event) {
