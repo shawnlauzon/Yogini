@@ -6,13 +6,13 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{asanaName}}</ion-title>
+    <ion-title>{{program.asanas[0].name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let asana of asanas" >
-    <img [src]="asana.image"/>
+  <ion-card *ngFor="let asana of program.asanas" >
+    <img [src]="asana.imageSrc"/>
     <ion-card-content>
       <ion-card-title>
         {{asana.name}}
