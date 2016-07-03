@@ -9,8 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
-      <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-avatar item-left>
         <img [src]="item.image"/>
       </ion-avatar>
@@ -19,7 +18,6 @@
         {{item.note}}
       </ion-note>
     </button>
-    </ion-item>
   </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>

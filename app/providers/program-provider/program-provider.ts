@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 /*
@@ -54,5 +56,18 @@ export class ProgramProvider {
         });
     });
   }
+}
+
+export interface Asana {
+  id: string;
+  name: string;
+  image_ur: string;
+  order: number;
+  sequence: Array<SequenceItem>; 
+}
+
+export interface SequenceItem {
+  audio: string;
+  pause: number;
 }
 

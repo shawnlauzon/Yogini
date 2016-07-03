@@ -12,7 +12,6 @@
       "id": "warm",
       "name": "Warming exercises",
       "description": "Allows your body to get accustomed to the energy",
-      "image_ig": "1270721328573813311_181792531",
       "image_ur": "gouhKrc",
       "time": 0,
       "order": 100,
@@ -85,6 +84,7 @@
       "time": 420,
       "announce_audio": "android.resource://com.shantikama.yogini/raw/pad_begin",
       "order": 200,
+      "image_ur": "FRSGL",
       "sequence": [
         {
           "awareness_audio": "android.resource://com.shantikama.yogini/raw/pad_end",
@@ -100,6 +100,7 @@
       "announce_audio": "android.resource://com.shantikama.yogini/raw/tad_announce",
       "announce_pause": 3,
       "order": 300,
+      "image_ur": "0c8JO",
       "sequence": [
         {
           "technique_audio": "android.resource://com.shantikama.yogini/raw/tad_tech",

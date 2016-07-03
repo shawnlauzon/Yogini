@@ -11,18 +11,18 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <img [src]="imageUrl"/>
+  <ion-card *ngFor="let asana of asanas" >
+    <img [src]="asana.image"/>
     <ion-card-content>
       <ion-card-title>
-        {{asanaName}}
+        {{asana.name}}
         </ion-card-title>
         <p>
-          <audio-player #audio1></audio-player>
+          <audio-player [id]="asana.id"></audio-player>
           3:00 at normal pace
         </p>
         <p>
-          {{asanaDescription}}
+          {{asana.description}}
         </p>
     </ion-card-content>
   </ion-card>

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
@@ -19,33 +19,37 @@ import { AudioPlayer } from '../../components/audio-player/audio-player';
   providers: [ImgurProvider]
 })
 export class AsanaPage {
-  @ViewChild('audio1') audio: AudioPlayer;
+  @ViewChildren(AudioPlayer) audio: QueryList<AudioPlayer>;
   program: any;
 
-  imageUrl: string;
-  asanaName: string;
-  asanaDescription: string;
+  asanas: Array<{ id: string, image: string, name: string, description: string }> = [];
 
-  constructor(private imgur: ImgurProvider, private nav: NavController, 
+  constructor(private imgur: ImgurProvider, private nav: NavController,
     private navParams: NavParams) {
-  	// TODO This should be handled with an Observable stream (Reative). For now
-  	// just play the first one
 
-  	this.program = navParams.get('program');
-    console.log(this.program);
+    this.program = navParams.get('program');
 
-    this.asanaName = this.program.asanas[0].name;
-    this.asanaDescription = this.program.asanas[0].description;
-    
-    this.imgur.get(this.program.asanas[0].image_ur).then(data => {
-      this.imageUrl = data.link;
-    })
+    for (let i = 0; i < this.program.asanas.length; i++) {
+      let element = this.program.asanas[i];
+      let asana = {
+        id: element.id,
+        name: element.name,
+        image: "",
+        description: element.description
+      }
+      console.log(asana);
+      if (element.image_ur) {
+        this.imgur.get(element.image_ur).then(data => {
+          asana.image = data.link;
+        });
+      }
+      this.asanas.push(asana);
+    };
   }
 
   ngAfterViewInit() {
-    console.log('Loading audio ...');
-    this.audio.load(this.program.asanas[0].sequence[0].audio).then(result => {
-      this.audio.play(this.onAudioFinished);
+    this.audio.first.load(this.program.asanas[0].sequence[0].audio).then(result => {
+      this.audio.first.play(this.onAudioFinished);
     });
   }
 
@@ -56,16 +60,16 @@ export class AsanaPage {
   signIntoInstagram() {
     var cordovaOauth: CordovaOauth;
     var igAccessToken: string = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
-    
+
     console.log('Attempting to sign into Instagram');
 
     const IG_CLIENT_ID = '6b419d3888d54ed8aba9d3871c1ea0dc';
     const IG_ACCESS_TOKEN = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
 
     console.log('Attempt init oAuth');
-    cordovaOauth = new CordovaOauth(new Instagram({ 
-      clientId: IG_CLIENT_ID, 
-      appScope: ["basic, public_content"], 
+    cordovaOauth = new CordovaOauth(new Instagram({
+      clientId: IG_CLIENT_ID,
+      appScope: ["basic, public_content"],
       redirectUri: 'http://localhost/callback'
     }));
     console.log('Attempt sign into IG');
@@ -88,8 +92,8 @@ export class AsanaPage {
   }
 
   playAudio(file: string) {
-  	var audioFile = `audio/${file}.mp3`
-  	console.log(`Playing file ${audioFile}`);
+    var audioFile = `audio/${file}.mp3`
+    console.log(`Playing file ${audioFile}`);
 
     // Create a MediaPlugin instance.  Expects path to file or url as argument
     // var media = new MediaPlugin(audioFile);
