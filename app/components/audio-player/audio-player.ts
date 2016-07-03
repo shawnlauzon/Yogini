@@ -25,10 +25,6 @@ export class AudioPlayer {
     SC.initialize({
       client_id: SC_CLIENT_ID
     });
-
-    // this.load('271734566').then(result => {
-    //   this.play()
-    // });
   }
 
   audioToggled(event) {
@@ -54,7 +50,7 @@ export class AudioPlayer {
     this.icon = 'play';
   }
 
-  load(id: string): Promise<{}> {
+  load(id: string) {
     const STREAM_URL = '/tracks/';
 
     console.log('Loading audio ' + STREAM_URL + id);

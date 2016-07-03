@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 import { AudioPlayer } from '../../components/audio-player/audio-player';
@@ -19,31 +19,33 @@ import { AudioPlayer } from '../../components/audio-player/audio-player';
   providers: [ImgurProvider]
 })
 export class AsanaPage {
-  @ViewChild(AudioPlayer) audio: AudioPlayer;
+  @ViewChild('audio1') audio: AudioPlayer;
+  program: any;
 
   imageUrl: string;
   asanaName: string;
   asanaDescription: string;
-
-  // the icon for the play / pause button should change based on its state
-  playButtonIcon: string;
 
   constructor(private imgur: ImgurProvider, private nav: NavController, 
     private navParams: NavParams) {
   	// TODO This should be handled with an Observable stream (Reative). For now
   	// just play the first one
 
-  	var program = navParams.get('program');
+  	this.program = navParams.get('program');
 
-    this.asanaName = program.asanas[0].name;
-    this.asanaDescription = program.asanas[0].description;
+    this.asanaName = this.program.asanas[0].name;
+    this.asanaDescription = this.program.asanas[0].description;
     
-    this.imgur.load(program.asanas[0].image_ur).then(data => {
+    this.imgur.load(this.program.asanas[0].image_ur).then(data => {
       this.imageUrl = data.link;
     })
+  }
 
+  ngAfterViewInit() {
     console.log('Loading audio ...');
-    //this.audio.load(program.asanas[0].announce_audio_sc).then(audio.play);
+    this.audio.load(this.program.asanas[0].announce_audio_sc).then(result => {
+      this.audio.play()
+    });
   }
 
   signIntoInstagram() {
