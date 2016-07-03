@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-// import { ,InAppBrowser } from 'ionic-native';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
-import { SC } from 'soundcloud';
+import SC = require('soundcloud');
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
-// import * as soundcloud from 'soundcloud';
- 
+
+// This is how to use something pulled from a script without typings defined
+// declare var SC: any;
+
 /*
   Generated class for the AsanaPage page.
 
@@ -38,7 +39,7 @@ export class AsanaPage {
     // if (this.igAccessToken == null) {
     //   this.signIntoInstagram();
     // }
-  	// this.streamAudio(this.program.asanas[0].announce_audio_sc)
+  	this.streamAudio(program.asanas[0].announce_audio_sc)
   }
 
   signIntoInstagram() {
@@ -74,7 +75,6 @@ export class AsanaPage {
     //     this.images = data.data.images;
     //   });
   }
-
 
   streamAudio(id: string) {
     const SC_CLIENT_ID = '69e382c16c5478ccb5ea223a0e1c4c92';
