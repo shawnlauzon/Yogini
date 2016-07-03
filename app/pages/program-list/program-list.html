@@ -9,13 +9,17 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
+    <ion-item>
+      <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <ion-avatar item-left>
+        <img [src]="item.image">
+      </ion-avatar>
+      <h2>{{item.title}}</h2>
+      <ion-note item-right>
         {{item.note}}
-      </div>
+      </ion-note>
     </button>
+    </ion-item>
   </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>

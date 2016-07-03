@@ -3,18 +3,22 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ProgramProvider } from '../../providers/program-provider/program-provider';
 import { ProgramOverviewPage } from '../program-overview/program-overview';
 import { AudioPlayer } from '../../components/audio-player/audio-player';
+import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 
 @Component({
   templateUrl: 'build/pages/program-list/program-list.html',
   directives: [AudioPlayer],
-  providers: [ProgramProvider]
+  providers: [ProgramProvider, ImgurProvider]
 })
 export class ProgramListPage {
   selectedItem: any;
-  items: Array<{title: string, note: string, icon: string, id: string}>;
+  items: Array<{ title: string, note: string, image: string, id: string }>;
 
-  constructor(public programProvider: ProgramProvider, 
-    private nav: NavController, navParams: NavParams) {
+  constructor(
+    private programProvider: ProgramProvider,
+    private imgur: ImgurProvider,
+    private nav: NavController,
+    private navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -22,12 +26,17 @@ export class ProgramListPage {
     this.programProvider.loadIndex().then((index) => {
       this.items = [];
       index.programs.forEach((element, index, array) => {
-        this.items.push({
+        let item = {
           title: element.name,
           note: `Provided by ${element.creator}`,
-          icon: 'rose',
+          image: "",
           id: element.id
+        };
+        // Set the image after it's loaded by ImgurProvider
+        imgur.get(element.image_ur).then(image_data => {
+          item.image = image_data.link;
         });
+        this.items.push(item);
       });
     });
   }

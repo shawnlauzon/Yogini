@@ -50,6 +50,10 @@ export class AudioPlayer {
     this.icon = 'play';
   }
 
+  onAudioFinished() {
+    console.log('Audio finished');
+  }
+
   load(id: string) {
     const STREAM_URL = '/tracks/';
 
@@ -57,9 +61,10 @@ export class AudioPlayer {
 
     return new Promise(resolve => {
       SC.stream(STREAM_URL + id).then(player => {
+        player.on('finish', this.onAudioFinished);
         this.player = player;
         resolve();
       });
     });
-  }  
+  }
 }

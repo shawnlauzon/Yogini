@@ -36,7 +36,7 @@ export class AsanaPage {
     this.asanaName = this.program.asanas[0].name;
     this.asanaDescription = this.program.asanas[0].description;
     
-    this.imgur.load(this.program.asanas[0].image_ur).then(data => {
+    this.imgur.get(this.program.asanas[0].image_ur).then(data => {
       this.imageUrl = data.link;
     })
   }

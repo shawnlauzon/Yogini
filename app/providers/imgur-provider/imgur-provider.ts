@@ -16,7 +16,9 @@ export class ImgurProvider {
     this.cache = new Map<string, any>();
   }
 
-  load(id: string): Promise<any> {
+  get(id: string): Promise<any> {
+    console.log("ImgurProvider: Getting image " + id);
+
     const CLIENT_ID = 'b7e267260e7dbb3';
     const IMAGE_URL = 'https://api.imgur.com/3/image/';
 
@@ -26,7 +28,10 @@ export class ImgurProvider {
     }
 
     // don't have the data yet
+    // TODO If we're already in the process or retrieving an image, we should
+    // wait until that image has already been retrieved
     return new Promise(resolve => {
+      console.log('Retrieving remotely ...');
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
       // Next we process the data and resolve the promise with the new data.
