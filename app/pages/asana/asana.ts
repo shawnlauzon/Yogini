@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { App, NavController, NavParams } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
-import SC = require('soundcloud');
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
+import { AudioPlayer } from '../../components/audio-player/audio-player';
 
 // This is how to use something pulled from a script without typings defined
 // declare var SC: any;
@@ -15,9 +15,12 @@ import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 */
 @Component({
   templateUrl: 'build/pages/asana/asana.html',
+  directives: [AudioPlayer],
   providers: [ImgurProvider]
 })
 export class AsanaPage {
+  private player: AudioPlayer;
+
   imageUrl: string;
   asanaName: string;
   asanaDescription: string;
@@ -25,7 +28,7 @@ export class AsanaPage {
   // the icon for the play / pause button should change based on its state
   playButtonIcon: string;
 
-  constructor(public imgur: ImgurProvider, 
+  constructor(/*audio: AudioPlayer, */public imgur: ImgurProvider, 
     private nav: NavController, navParams: NavParams) {
   	// TODO This should be handled with an Observable stream (Reative). For now
   	// just play the first one
@@ -39,10 +42,10 @@ export class AsanaPage {
       this.imageUrl = data.link;
     })
 
-    // if (this.igAccessToken == null) {
-    //   this.signIntoInstagram();
-    // }
-  	this.streamAudio(program.asanas[0].announce_audio_sc);
+    console.log('Looking for audio player');
+    // this.player = app.getComponent('audio-player2');
+    // console.log('Loading audio ...');
+    //audio.load(program.asanas[0].announce_audio_sc);//.then(audio.play);
   }
 
   signIntoInstagram() {
@@ -78,30 +81,6 @@ export class AsanaPage {
     //     this.images = data.data.images;
     //   });
   }
-
-  streamAudio(id: string) {
-    const SC_CLIENT_ID = '69e382c16c5478ccb5ea223a0e1c4c92';
-
-    var audioStream = `/tracks/${id}`;
-    console.log('Initializing ...');
-
-    SC.initialize({
-      client_id: '69e382c16c5478ccb5ea223a0e1c4c92'
-    });
-
-    // console.log('Loading resource for user: ');
-    // soundcloud.get('/users/user-165327345').then(resource => {
-    //   console.log('got resource:');
-    //   console.log(resource);
-    // });
-
-    console.log(`Opening stream ${audioStream}`);
-
-    SC.stream(audioStream).then(player => {
-      player.play();
-      this.playButtonIcon = 'play';
-    })
- }
 
   playAudio(file: string) {
   	var audioFile = `audio/${file}.mp3`

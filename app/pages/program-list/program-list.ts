@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProgramProvider } from '../../providers/program-provider/program-provider';
 import { ProgramOverviewPage } from '../program-overview/program-overview';
+import { AudioPlayer } from '../../components/audio-player/audio-player';
 
 @Component({
   templateUrl: 'build/pages/program-list/program-list.html',
+  directives: [AudioPlayer],
   providers: [ProgramProvider]
 })
 export class ProgramListPage {
