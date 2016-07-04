@@ -45,6 +45,7 @@ export class AudioPlayer {
 
     console.log('play');
     this.player.play();
+    this.player.seek(3000);
     this.icon = 'pause';
   }
 

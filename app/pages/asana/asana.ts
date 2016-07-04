@@ -22,7 +22,13 @@ import { Program, Asana } from '../../providers/program-provider/program-provide
 export class AsanaPage {
   @ViewChildren(AudioPlayer) audio: QueryList<AudioPlayer>;
 
+  // FIXME Yuck this should be Array<AudioPlayer>
+  audioArray: any;
+
   program: Program;
+
+  private curAsana: number = 0;
+  private curSequenceItem: number = 0;
 
   constructor(private imgur: ImgurProvider, private nav: NavController,
     private navParams: NavParams) {
@@ -43,14 +49,36 @@ export class AsanaPage {
   }
 
   ngAfterViewInit() {
-    this.audio.first.load(this.program.asanas[0].sequence[0].audio).then(result => {
-      this.audio.first.play(this.onAudioFinished);
-    });
+    this.audioArray = this.audio.toArray();
+    this.playAudio();
   }
 
-  onAudioFinished() {
-    console.log('audio finished.');
-  };
+  playAudio() {
+    this.audioArray[0].load(this.program.asanas[this.curAsana].sequence[this.curSequenceItem].audio)
+      .then(result => {
+        this.audioArray[this.curAsana].play(this.newAudioCompletionListener());
+      });
+  }
+
+  advance() {
+    this.curSequenceItem += 1;
+    if (this.program.asanas[this.curAsana].sequence.length <= this.curSequenceItem) {
+      this.curAsana += 1;
+      this.curSequenceItem = 0;
+    }
+  }
+
+  newAudioCompletionListener() {
+    // Store the pointer to this because when executed, `this` will become
+    // the current execution point
+    var _this: AsanaPage = this;
+    return function() {
+      console.log('audio finished.');
+
+      _this.advance();
+      _this.playAudio();
+    };
+  }
 
   signIntoInstagram() {
     var cordovaOauth: CordovaOauth;
@@ -84,32 +112,5 @@ export class AsanaPage {
     //   .subscribe(data => {
     //     this.images = data.data.images;
     //   });
-  }
-
-  playAudio(file: string) {
-    var audioFile = `audio/${file}.mp3`
-    console.log(`Playing file ${audioFile}`);
-
-    // Create a MediaPlugin instance.  Expects path to file or url as argument
-    // var media = new MediaPlugin(audioFile);
-
-    // Catch the Success & Error Output
-    // Platform Quirks
-    // iOS calls success on completion of playback only
-    // Android calls success on completion of playback AND on release()
-    // media.init.then(() => {
-    //   console.log("Playback Finished");
-    // }, (err) => {
-    //   console.log("somthing went wrong! error code: "+err.code+" message: "+err.message);
-    // });
-
-    // play the file
-    // media.play();
-
-    // release the native audio resource
-    // Platform Quirks:
-    // iOS simply create a new instance and the old one will be overwritten
-    // Android you must call release() to destroy instances of media when you are done
-    // media.release();
   }
 }
