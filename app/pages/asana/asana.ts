@@ -92,40 +92,42 @@ export class AsanaPage {
     console.log("update time to " + this.timeRemaining);
   }
 
-  _wait() {
+  wait() {
     var secRemaining = this.getCurrentSequenceItem().wait;
     var _this = this;
 
     // FIXME Handle pause pressed while interval is active
-    _this.intervalId = setInterval(function() {
+    _this.intervalId = setInterval(function () {
       secRemaining -= 1;
       if (secRemaining > 0) {
         _this.showTimeRemaining(secRemaining);
       } else {
         clearInterval(_this.intervalId);
-        _this._advance();
-        _this.playAudio();
+        _this.advance();
       }
-    }, 1000);    
+    }, 1000);
   }
 
-  _advance() {
+  advance() {
     this.curSequenceItem += 1;
     if (this.program.asanas[this.curAsana].sequence.length <= this.curSequenceItem) {
       this.curAsana += 1;
       this.curSequenceItem = 0;
       this.slider.slideTo(this.curAsana);
     }
+
+    this.showTimeRemaining(this.getCurrentSequenceItem().wait);
+    this.playAudio();
   }
 
   newAudioCompletionListener() {
     // Store the pointer to this because when executed, `this` will become
     // the current execution point
     var _this: AsanaPage = this;
-    return function() {
+    return function () {
       console.log('audio finished.');
 
-      _this._wait();
+      _this.wait();
     };
   }
 
