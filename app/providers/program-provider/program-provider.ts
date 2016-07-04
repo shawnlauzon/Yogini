@@ -70,7 +70,6 @@ export class ProgramProvider {
   // variables on the parent are accessible through the child
   setPrototypes(program: Program) {
     this.loadProgram(program.parent).then(prototype => {
-      console.log(program.asanas.length);
       for (let i = 0; i < program.asanas.length; i++) {
         // Must do the sequence first because after the asana prototype is set,
         // there will always be a sequence (from the prototype!)
