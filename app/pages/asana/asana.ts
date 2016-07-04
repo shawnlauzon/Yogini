@@ -1,5 +1,5 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Slides } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 import { AudioPlayer } from '../../components/audio-player/audio-player';
@@ -16,19 +16,25 @@ import { Program, Asana } from '../../providers/program-provider/program-provide
 */
 @Component({
   templateUrl: 'build/pages/asana/asana.html',
-  directives: [AudioPlayer],
+  directives: [AudioPlayer, Slides],
   providers: [ImgurProvider]
 })
 export class AsanaPage {
   @ViewChildren(AudioPlayer) audio: QueryList<AudioPlayer>;
+  @ViewChild(Slides) slider: Slides;
 
-  // FIXME Yuck this should be Array<AudioPlayer>
+  // FIXME Yuck this should be Array<AudioPlayer>. I get a copy
+  // of the QueryList because there's no way to access an element by index
   audioArray: any;
 
   program: Program;
 
-  private curAsana: number = 1;
+  private curAsana: number = 0;
   private curSequenceItem: number = 0;
+
+  mySlideOptions = {
+    direction: 'vertical'
+  };
 
   constructor(private imgur: ImgurProvider, private nav: NavController,
     private navParams: NavParams) {
@@ -52,6 +58,13 @@ export class AsanaPage {
 
   ngAfterViewInit() {
     this.audioArray = this.audio.toArray();
+
+    // If we aren't starting at the first asana
+    console.log(this.slider);
+
+    // debugger;
+    // this.slider.slideTo(this.curAsana);
+
     this.playAudio();
   }
 
@@ -62,11 +75,12 @@ export class AsanaPage {
       });
   }
 
-  advance() {
+  _advance() {
     this.curSequenceItem += 1;
     if (this.program.asanas[this.curAsana].sequence.length <= this.curSequenceItem) {
       this.curAsana += 1;
       this.curSequenceItem = 0;
+      this.slider.slideTo(this.curAsana);
     }
   }
 
@@ -77,7 +91,7 @@ export class AsanaPage {
     return function() {
       console.log('audio finished.');
 
-      _this.advance();
+      _this._advance();
       _this.playAudio();
     };
   }

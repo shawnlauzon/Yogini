@@ -11,19 +11,23 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let asana of program.asanas" >
-    <img [src]="asana.imageSrc"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{asana.name}}
-        </ion-card-title>
-        <p>
-          <audio-player [id]="asana.id"></audio-player>
-          3:00 at normal pace
-        </p>
-        <p>
-          {{asana.description}}
-        </p>
-    </ion-card-content>
-  </ion-card>
+  <ion-slides [options]="mySlideOptions">
+    <ion-slide *ngFor="let asana of program.asanas">
+      <ion-card>
+        <img [src]="asana.imageSrc" />
+        <ion-card-content>
+          <ion-card-title>
+            {{asana.name}}
+          </ion-card-title>
+          <p>
+            <audio-player [id]="asana.id"></audio-player>
+            3:00 at normal pace
+          </p>
+          <p>
+            {{asana.description}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
