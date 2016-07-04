@@ -3,7 +3,7 @@ import { NavController, NavParams, Slides } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 import { AudioPlayer } from '../../components/audio-player/audio-player';
-import { Program, Asana } from '../../providers/program-provider/program-provider';
+import { Program, Asana, SequenceItem } from '../../providers/program-provider/program-provider';
 
 // This is how to use something pulled from a script without typings defined
 // declare var SC: any;
@@ -29,8 +29,13 @@ export class AsanaPage {
 
   program: Program;
 
+  // displayed to user
+  timeRemaining: string = "";
+
   private curAsana: number = 0;
   private curSequenceItem: number = 0;
+
+  private intervalId;
 
   mySlideOptions = {
     direction: 'vertical'
@@ -41,6 +46,7 @@ export class AsanaPage {
 
     this.program = navParams.get('program');
     this._resolveImageUrls();
+    this.showTimeRemaining(this.getCurrentSequenceItem().pause);
   }
 
   _resolveImageUrls() {
@@ -69,10 +75,38 @@ export class AsanaPage {
   }
 
   playAudio() {
-    this.audioArray[this.curAsana].load(this.program.asanas[this.curAsana].sequence[this.curSequenceItem].audio)
+    this.audioArray[this.curAsana].load(this.getCurrentSequenceItem().audio)
       .then(result => {
         this.audioArray[this.curAsana].play(this.newAudioCompletionListener());
       });
+  }
+
+  getCurrentSequenceItem(): SequenceItem {
+    return this.program.asanas[this.curAsana].sequence[this.curSequenceItem]
+  }
+
+  showTimeRemaining(secRemaining: number) {
+    var min = Math.floor(secRemaining / 60);
+    var sec = Math.floor(secRemaining % 60);
+    this.timeRemaining = min + ':' + (secRemaining < 10 ? '0' + sec : sec);
+    console.log("update time to " + this.timeRemaining);
+  }
+
+  _wait() {
+    var secRemaining = this.getCurrentSequenceItem().pause;
+    var _this = this;
+
+    // FIXME Handle pause pressed while interval is active
+    _this.intervalId = setInterval(function() {
+      secRemaining -= 1;
+      if (secRemaining > 0) {
+        _this.showTimeRemaining(secRemaining);
+      } else {
+        clearInterval(_this.intervalId);
+        _this._advance();
+        _this.playAudio();
+      }
+    }, 1000);    
   }
 
   _advance() {
@@ -91,8 +125,7 @@ export class AsanaPage {
     return function() {
       console.log('audio finished.');
 
-      _this._advance();
-      _this.playAudio();
+      _this._wait();
     };
   }
 
