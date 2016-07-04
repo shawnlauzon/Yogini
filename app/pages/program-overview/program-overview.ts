@@ -24,7 +24,7 @@ export class ProgramOverviewPage {
   constructor(
     private programProvider: ProgramProvider,
     private imgur: ImgurProvider,
-    private nav: NavController, 
+    private nav: NavController,
     private navParams: NavParams) {
 
     this.programInfo = navParams.get('programInfo');

@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { NavController, NavParams, Slides } from 'ionic-angular';
 import { CordovaOauth, Instagram } from 'ng2-cordova-oauth/core';
+import { Insomnia } from 'ionic-native';
 import { ImgurProvider } from '../../providers/imgur-provider/imgur-provider';
 import { AudioPlayer } from '../../components/audio-player/audio-player';
 import { Program, Asana, SequenceItem } from '../../providers/program-provider/program-provider';
@@ -43,6 +44,13 @@ export class AsanaPage {
 
     this.program = navParams.get('program');
     this.resolveImageUrls();
+
+    Insomnia.keepAwake()
+      .then(
+      () => console.log('Success preventing screen sleep'),
+      () => console.error('Could not prevent screen sleep')
+      );
+
 
     for (let i = 0; i < this.program.asanas.length; i++) {
       this.program.asanas[i].timeRemaining = this.getTimeRemaining(
@@ -104,7 +112,7 @@ export class AsanaPage {
     _this.intervalId = setInterval(function () {
       secRemaining -= 1;
       if (secRemaining > 0) {
-        
+
         _this.getCurrentAsana().timeRemaining = _this.getTimeRemaining(secRemaining);
         console.log("update time to " + _this.getCurrentAsana().timeRemaining);
       } else {
