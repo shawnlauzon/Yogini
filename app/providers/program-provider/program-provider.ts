@@ -89,5 +89,5 @@ export interface Asana {
 
 export interface SequenceItem {
   audio: string;
-  pause: number;
+  wait: number;
 }

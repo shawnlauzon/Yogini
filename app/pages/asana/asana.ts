@@ -46,7 +46,7 @@ export class AsanaPage {
 
     this.program = navParams.get('program');
     this._resolveImageUrls();
-    this.showTimeRemaining(this.getCurrentSequenceItem().pause);
+    this.showTimeRemaining(this.getCurrentSequenceItem().wait);
   }
 
   _resolveImageUrls() {
@@ -93,7 +93,7 @@ export class AsanaPage {
   }
 
   _wait() {
-    var secRemaining = this.getCurrentSequenceItem().pause;
+    var secRemaining = this.getCurrentSequenceItem().wait;
     var _this = this;
 
     // FIXME Handle pause pressed while interval is active
