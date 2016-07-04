@@ -82,14 +82,16 @@
       "id": "pad",
       "name": "Pādahastāsana",
       "time": 420,
-      "announce_audio": "android.resource://com.shantikama.yogini/raw/pad_begin",
       "order": 200,
       "image": "FRSGL",
       "sequence": [
         {
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/pad_end",
-          "awareness_pause": 10,
-          "skip_phases": [ "begin", "end" ]
+          "audio": "272031253",
+          "pause": 420
+        },
+        {
+          "audio": "272031248",
+          "pause": 10
         }
       ]
     },
@@ -103,12 +105,20 @@
       "image": "0c8JO",
       "sequence": [
         {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/tad_tech",
-          "technique_pause": 1,
-          "concentration_audio": "android.resource://com.shantikama.yogini/raw/tad_con",
-          "end_pause": 5,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/tad_aware",
-          "awareness_pause": 10
+          "audio": "272030471",
+          "pause": 3
+        },
+        {
+          "audio": "272030367",
+          "pause": 1
+        },
+        {
+          "audio": "272030459",
+          "pause": 420
+        },
+        {
+          "audio": "272030467",
+          "pause": 10
         }
       ]
     },

@@ -27,7 +27,7 @@ export class AsanaPage {
 
   program: Program;
 
-  private curAsana: number = 0;
+  private curAsana: number = 1;
   private curSequenceItem: number = 0;
 
   constructor(private imgur: ImgurProvider, private nav: NavController,
@@ -44,6 +44,8 @@ export class AsanaPage {
         this.imgur.get(element.image).then(data => {
           element.imageSrc = data.link;
         });
+      } else {
+        element.imageSrc = "";
       }
     };
   }
@@ -54,7 +56,7 @@ export class AsanaPage {
   }
 
   playAudio() {
-    this.audioArray[0].load(this.program.asanas[this.curAsana].sequence[this.curSequenceItem].audio)
+    this.audioArray[this.curAsana].load(this.program.asanas[this.curAsana].sequence[this.curSequenceItem].audio)
       .then(result => {
         this.audioArray[this.curAsana].play(this.newAudioCompletionListener());
       });
