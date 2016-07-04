@@ -104,6 +104,7 @@ export class AsanaPage {
     _this.intervalId = setInterval(function () {
       secRemaining -= 1;
       if (secRemaining > 0) {
+        
         _this.getCurrentAsana().timeRemaining = _this.getTimeRemaining(secRemaining);
         console.log("update time to " + _this.getCurrentAsana().timeRemaining);
       } else {
