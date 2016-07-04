@@ -85,6 +85,7 @@ export interface Asana {
   imageSrc?: string;
   order: number;
   sequence: Array<SequenceItem>;
+  timeRemaining?: string;
 }
 
 export interface SequenceItem {

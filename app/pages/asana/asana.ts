@@ -29,9 +29,6 @@ export class AsanaPage {
 
   program: Program;
 
-  // displayed to user
-  timeRemaining: string = "";
-
   private curAsana: number = 0;
   private curSequenceItem: number = 0;
 
@@ -45,11 +42,15 @@ export class AsanaPage {
     private navParams: NavParams) {
 
     this.program = navParams.get('program');
-    this._resolveImageUrls();
-    this.showTimeRemaining(this.getCurrentSequenceItem().wait);
+    this.resolveImageUrls();
+
+    for (let i = 0; i < this.program.asanas.length; i++) {
+      this.program.asanas[i].timeRemaining = this.getTimeRemaining(
+        this.program.asanas[i].sequence[0].wait);
+    }
   }
 
-  _resolveImageUrls() {
+  resolveImageUrls() {
     for (let i = 0; i < this.program.asanas.length; i++) {
       let element = this.program.asanas[i];
       if (element.image) {
@@ -82,14 +83,17 @@ export class AsanaPage {
   }
 
   getCurrentSequenceItem(): SequenceItem {
-    return this.program.asanas[this.curAsana].sequence[this.curSequenceItem]
+    return this.getCurrentAsana().sequence[this.curSequenceItem]
   }
 
-  showTimeRemaining(secRemaining: number) {
+  getCurrentAsana(): Asana {
+    return this.program.asanas[this.curAsana];
+  }
+
+  getTimeRemaining(secRemaining: number): string {
     var min = Math.floor(secRemaining / 60);
     var sec = Math.floor(secRemaining % 60);
-    this.timeRemaining = min + ':' + (secRemaining < 10 ? '0' + sec : sec);
-    console.log("update time to " + this.timeRemaining);
+    return min + ':' + (sec < 10 ? '0' + sec : sec);
   }
 
   wait() {
@@ -100,7 +104,8 @@ export class AsanaPage {
     _this.intervalId = setInterval(function () {
       secRemaining -= 1;
       if (secRemaining > 0) {
-        _this.showTimeRemaining(secRemaining);
+        _this.getCurrentAsana().timeRemaining = _this.getTimeRemaining(secRemaining);
+        console.log("update time to " + _this.getCurrentAsana().timeRemaining);
       } else {
         clearInterval(_this.intervalId);
         _this.advance();
@@ -116,7 +121,7 @@ export class AsanaPage {
       this.slider.slideTo(this.curAsana);
     }
 
-    this.showTimeRemaining(this.getCurrentSequenceItem().wait);
+    this.getCurrentAsana().timeRemaining = this.getTimeRemaining(this.getCurrentSequenceItem().wait);
     this.playAudio();
   }
 
