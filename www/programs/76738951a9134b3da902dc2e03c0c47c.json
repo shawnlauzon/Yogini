@@ -99,8 +99,6 @@
       "id": "tad",
       "name": "Tadāsana",
       "time": 420,
-      "announce_audio": "android.resource://com.shantikama.yogini/raw/tad_announce",
-      "announce_wait": 3,
       "order": 300,
       "image": "0c8JO",
       "sequence": [
