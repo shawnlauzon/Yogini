@@ -159,39 +159,34 @@
       "id": "trik",
       "name": "Trikonāsana",
       "time": 150,
-      "announce_audio": "android.resource://com.shantikama.yogini/raw/trik_announce",
-      "announce_wait": 3,
       "order": 500,
       "sequence": [
         { 
-          "audio": "272030357",
-          "name": "Trikonāsana announce",
-          "wait": 3
+          "audio": "272082932",
+          "name": "Trikonāsana left",
+          "wait": 150
         },
         { 
-          "audio": "272029987",
-          "name": "Trikonāsana technique left",
-          "wait": 8
+          "audio": "272082934",
+          "name": "Trikonāsana awareness left",
+          "wait": 10
         },
-        {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/trik_technique_left",
-          "technique_wait": 1,
-          "concentration_audio": "android.resource://com.shantikama.yogini/raw/trik_concentration_left",
-          "end_wait": 5,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/trik_awareness_left",
-          "awareness_wait": 10
+        { 
+          "audio": "272082927",
+          "name": "Trikonāsana right",
+          "wait": 150
         },
-        {
-          "technique_audio": "android.resource://com.shantikama.yogini/raw/trik_technique_right",
-          "technique_wait": 1,
-          "concentration_audio": "android.resource://com.shantikama.yogini/raw/trik_concentration_right",
-          "end_wait": 5,
-          "awareness_audio": "android.resource://com.shantikama.yogini/raw/trik_awareness_right",
-          "awareness_wait": 10
+        { 
+          "audio": "272082891",
+          "name": "Trikonāsana awareness right",
+          "wait": 10
+        },
+        { 
+          "audio": "272083323",
+          "name": "Trikonāsana stretch",
+          "wait": 10
         }
-      ],
-      "stretch_audio": "android.resource://com.shantikama.yogini/raw/trik_stretch",
-      "stretch_wait": 10
+       ]
     },
     {
       "id": "garu",
