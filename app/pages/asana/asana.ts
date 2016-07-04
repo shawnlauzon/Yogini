@@ -135,38 +135,4 @@ export class AsanaPage {
       _this.wait();
     };
   }
-
-  signIntoInstagram() {
-    var cordovaOauth: CordovaOauth;
-    var igAccessToken: string = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
-
-    console.log('Attempting to sign into Instagram');
-
-    const IG_CLIENT_ID = '6b419d3888d54ed8aba9d3871c1ea0dc';
-    const IG_ACCESS_TOKEN = '181792531.6b419d3.301f178d7c9c458ba5fc5ba3aff62843';
-
-    console.log('Attempt init oAuth');
-    cordovaOauth = new CordovaOauth(new Instagram({
-      clientId: IG_CLIENT_ID,
-      appScope: ["basic, public_content"],
-      redirectUri: 'http://localhost/callback'
-    }));
-    console.log('Attempt sign into IG');
-
-    cordovaOauth.login().then((success) => {
-      console.log(JSON.stringify(success));
-      igAccessToken = JSON.parse(JSON.stringify(success)).access_token;
-      console.log('Got access token: ' + igAccessToken);
-      // TODO store access token and load image
-    }, (error) => {
-      console.log(JSON.stringify(error));
-      console.log('Skipping images');
-    });
-
-    // this.http.get(`https://api.instagram.com/v1/media/${id}?access_token=${this.accessToken}`)
-    //   .map(res => res.json())
-    //   .subscribe(data => {
-    //     this.images = data.data.images;
-    //   });
-  }
 }
