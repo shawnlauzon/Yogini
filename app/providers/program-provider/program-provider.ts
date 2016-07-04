@@ -129,4 +129,5 @@ export interface Asana {
 export interface SequenceItem {
   audio: string;
   wait: number;
+  name: string;
 }

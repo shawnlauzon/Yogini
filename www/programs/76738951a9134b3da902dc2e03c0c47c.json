@@ -18,62 +18,77 @@
       "sequence": [
         { 
           "audio": "272031490",
+          "name": "Become conscious",
           "wait": 8
         },
         {
           "audio": "272029950",
+          "name": "Head rotation to the left",
           "wait": 45
         },
         {
           "audio": "272029939",
+          "name": "Head rotation to the right",
           "wait": 45
         },
         {
           "audio": "272029945",
+          "name": "Head rotation awareness",
           "wait": 8
         },
         {
           "audio": "272029935",
+          "name": "Quick head movement",
           "wait": 55
         },
         {
           "audio": "272029931",
+          "name": "Quick head movement awareness",
           "wait": 8
         },
        {
           "audio": "272029928",
+          "name": "Lateral head swing",
           "wait": 35
         },
         {
           "audio": "272029923",
+          "name": "Lateral head swing awareness",
           "wait": 8
         },
         {
           "audio": "272029920",
+          "name": "Shoulder movement",
           "wait": 30
         },
         {
           "audio": "272029913",
+          "name": "Shoulder movement awareness",
           "wait": 8
         },
         {
           "audio": "272029902",
+          "name": "Thorax and spine stretch",
           "wait": 150
         },
         {
           "audio": "272029896",
+          "name": "Thorax and spine stretch awareness",
           "wait": 8
         },
         {
           "audio": "272029886",
+          "name": "Gastric massage clockwise",
           "wait": 25
         },
         {
           "audio": "272029870",
+          "name": "Gastric massage counterclockwise",
           "wait": 25
         },
         {
           "audio": "272029879",
+          "name": "Gastric massage awareness",
           "wait": 10
         }
       ]
@@ -148,6 +163,16 @@
       "announce_wait": 3,
       "order": 500,
       "sequence": [
+        { 
+          "audio": "272030357",
+          "name": "Trikonāsana announce",
+          "wait": 3
+        },
+        { 
+          "audio": "272029987",
+          "name": "Trikonāsana technique left",
+          "wait": 8
+        },
         {
           "technique_audio": "android.resource://com.shantikama.yogini/raw/trik_technique_left",
           "technique_wait": 1,
