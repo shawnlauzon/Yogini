@@ -51,7 +51,6 @@ export class AsanaPage {
       () => console.error('Could not prevent screen sleep')
       );
 
-
     for (let i = 0; i < this.program.asanas.length; i++) {
       this.program.asanas[i].timeRemaining = this.getTimeRemaining(
         this.program.asanas[i].sequence[0].wait);
