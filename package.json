@@ -44,6 +44,10 @@
       "locator": "ios"
     }
   ],
+  "engines": {
+    "node": "5.12.0",
+    "npm": "3.8.6"
+  },
   "name": "yogini",
   "description": "Yogini: An Ionic project"
 }
